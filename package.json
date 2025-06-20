@@ -1,0 +1,30 @@
+{
+  "name": "reactnew",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reactdev-env/ReactRevise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^6.30.1",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^4.1.8"
+  },
+  "browserslist": [
+    "last 2 chrome version"
+  ]
+}
