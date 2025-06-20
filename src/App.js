@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./Components/Body";
+//import Header from "./Components/Header";
+//import Card from "./Components/Card";
 
 const App=()=>{
     return(
         <div>
         <Body/>
-        <h1>I am App</h1>
+        
         </div>
+       
         
     )
 };
