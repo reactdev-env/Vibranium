@@ -1,31 +1,46 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import Shimmer from "./Shimmer";
+import SearchBar from "./Searchbar";
 
 const Body = () => {
-  const [comments, setComments] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]);              // All restaurants from API
+  
+  const [searchText, setSearchText] = useState([]);    // Filtered list based on search
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-  const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=17.518468&lng=78.3038449&carousel=true&third_party_vendor=1");
-  const json = await data.json();
+    const data = await fetch("https://swiggy-api-4c740.web.app/swiggy-api.json");
+    const json = await data.json();
 
-  console.log(json);
+    console.log(json)
 
-  setComments(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-};
+    const restaurants = json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
+    setAllRestaurants(restaurants);
+    setSearchText(restaurants); // Initial filtered list is the full list
+  };
 
+  const handleSearch = (searchText) => {
+    const filtered = allRestaurants.filter(res =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setSearchText(filtered); // This updates what is displayed
+  };
 
-  return (
+  return searchText.length === 0 ? (
+    <h1 className="text-2xl font-bold ml-5 mt-4"><Shimmer /></h1>
+  ) : (
     <div>
       <h2 className="text-2xl font-bold ml-5 mt-4">Restaurants</h2>
+      <SearchBar onSearch={handleSearch} />
+
       <div className="flex flex-wrap">
-        {comments.map((res) => (
-          <Card key={res.info.id} resData={res.info}
-          />
+        {searchText.map((res) => (
+          <Card key={res.info.id} resData={res.info} />
         ))}
       </div>
     </div>
