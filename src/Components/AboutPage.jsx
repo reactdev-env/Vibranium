@@ -14,7 +14,7 @@ const AboutPage = () => {
       {/* Company Image + Mission */}
       <div className="grid md:grid-cols-2 gap-10 items-center mb-20">
         <img
-          src="https://source.unsplash.com/featured/?technology,teamwork"
+          src="https://cdnlogo.com/logos/r/93/react.svg"
           alt="Our Team"
           className="rounded-xl shadow-lg w-full h-80 object-cover"
         />
