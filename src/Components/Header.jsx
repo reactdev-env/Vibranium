@@ -22,6 +22,7 @@ const Header = () => {
         <li><Link to="/about" className="hover:text-blue-500">AboutPage</Link></li>
         <li><Link to="/ContactUs" className="hover:text-blue-500">Contact Us</Link></li>
         <li><Link to="/" className="hover:text-blue-500">Home Page</Link></li>
+        <li><Link to="/Grocery" className="hover:text-blue-500">Grocery</Link></li>
         <li><Link to="/cart">Cart</Link></li>
 
         <button
