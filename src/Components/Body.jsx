@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card , {promotedLabel} from "./Card";
 import Shimmer from "./Shimmer";
 import SearchBar from "./Searchbar";
 import useOnlinestatus from "../utils/useOnlineStatus";
@@ -8,6 +8,8 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);              // All restaurants from API
   
   const [searchText, setSearchText] = useState([]);    // Filtered list based on search
+
+  const theLabel = promotedLabel(Card);
 
   useEffect(() => {
     fetchData();
@@ -49,9 +51,13 @@ const Body = () => {
       <SearchBar onSearch={handleSearch} />
 
       <div className="flex flex-wrap">
-        {searchText.map((res) => (
-          <Card key={res.info.id} resData={res.info} />
-        ))}
+        {searchText.map((res) => {
+          const PromotedCard = res.info.promoted ? theLabel : Card;
+          return <PromotedCard key={res.info.id} resData={res.info} />
+        })}
+
+        
+
       </div>
     </div>
   );
